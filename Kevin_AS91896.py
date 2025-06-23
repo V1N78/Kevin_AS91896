@@ -70,19 +70,19 @@ if choice == "city":
         choice = input("Type 'investigate' to check out the noise or 'leave' to exit the city: ").lower()
         
 
-# #if they choose to investigate the noise1 - problem on loop
-# if choice == "investigate":
-#         print("-----------------------------------------------------------------------------------------------------------------")
-#         print()
-#         print("You and Zuko move towards the source of the noise. You find a group of mutated creatures huddled around a fire.")
-#         print()
-#         print("They look at you with curiosity but do not attack. Do you want to try to communicate with them or leave quickly?")
-#         print()
-#         print("-----------------------------------------------------------------------------------------------------------------")
-#         choice = input("Type 'communicate' to try talking to them or 'leave' to exit the bunker: ").lower()
-# while choice not in ["communicate", "leave"]:
-#         print("Invalid choice. Please type 'communicate' or 'leave'.")
-#         choice = input("Type 'communicate' to try talking to them or 'leave' to exit the bunker: ").lower()
+#if they choose to investigate the noise1
+if choice == "investigate":
+        print("-----------------------------------------------------------------------------------------------------------------")
+        print()
+        print("You and Zuko move towards the source of the noise. You find a group of mutated creatures huddled around a fire.")
+        print()
+        print("They look at you with curiosity but do not attack. Do you want to try to communicate with them or leave quickly?")
+        print()
+        print("-----------------------------------------------------------------------------------------------------------------")
+        choice = input("Type 'communicate' to try talking to them or 'leave' to exit the bunker: ").lower()
+while choice not in ["communicate", "leave"]:
+        print("Invalid choice. Please type 'communicate' or 'leave'.")
+        choice = input("Type 'communicate' to try talking to them or 'leave' to exit the bunker: ").lower()
 
 
 #if they choose to communicate with the creatures1 - Dead
@@ -200,6 +200,7 @@ if choice == "disable":
             print("---------------------------------------------------------------------------------------------------------")
         #no gun/Dead
         else:
+            print("---------------------------------------------------------------------------------------------------------")
             print()
             print("Unarmed, you try to hide—but the raiders spot you. You and Zuko put up a fight, but it’s no use.")
             print()
@@ -215,12 +216,13 @@ if choice == "disable":
         print()
         print("It takes longer, and you're forced to ration your food.")
         print()
+        print("----------------------------------------------------------------------------------------------------------")
         if "food" in backpack:
             print("-------------------------------------------------------")
             print()
             print("You eat just enough to keep moving, sharing with Zuko.")
             print()
-            print("----------------------------------------------------------------------------------------------------------")
+            print("-------------------------------------------------------")
             backpack.remove("food")
         else:
             print("----------------------------------------------------------------------------------------------------------")
@@ -257,29 +259,29 @@ elif choice == "avoid":
     print()
     print("---------------------------------------------------------------------------------------------------------")
 
-#if they choose to investigate the noise2
-if choice == "investigate":
-        print("-----------------------------------------------------------------------------------------------------------------")
-        print()
-        print("You and Zuko move towards the source of the noise. You find a group of mutated creatures huddled around a fire.")
-        print()
-        print("They look at you with curiosity but do not attack. Do you want to try to communicate with them or leave quickly?")
-        print()
-        print("-----------------------------------------------------------------------------------------------------------------")
-        choice = input("Type 'communicate' to try talking to them or 'leave' to exit the city: ").lower()
-while choice not in ["communicate", "leave"]:
-        print("Invalid choice. Please type 'communicate' or 'leave'.")
-        choice = input("Type 'communicate' to try talking to them or 'leave' to exit the city: ").lower()
+# #if they choose to investigate the noise2 - problem on loop
+# if choice == "investigate":
+#         print("-----------------------------------------------------------------------------------------------------------------")
+#         print()
+#         print("You and Zuko move towards the source of the noise. You find a group of mutated creatures huddled around a fire.")
+#         print()
+#         print("They look at you with curiosity but do not attack. Do you want to try to communicate with them or leave quickly?")
+#         print()
+#         print("-----------------------------------------------------------------------------------------------------------------")
+#         choice = input("Type 'communicate' to try talking to them or 'leave' to exit the city: ").lower()
+# while choice != "communicate" and choice != "leave":
+#     print("Invalid choice. Please type 'communicate' or 'leave'.")
+#     choice = input("Type 'communicate' to try talking to them or 'leave' to exit the city: ").lower()
 
 #if they choose to communicate with the creatures2
-        print("------------------------------------------------------------------------------------------------------------------")
-        print()
-        print("The creatures—humanoid but deformed from radiation—gesture for you to sit. Their fire crackles softly.")
-        print()
-        print("One, who calls himself 'Grak', explains they were once human. Survivors of a failed government experiment.")
-        print()
-        print("They offer you supplies in exchange for food. You trade willingly, and they hand over clean water and a pouch of used medicine.")
-        if "food" in backpack:
+print("------------------------------------------------------------------------------------------------------------------")
+print()
+print("The creatures—humanoid but deformed from radiation—gesture for you to sit. Their fire crackles softly.")
+print()
+print("One, who calls himself 'Grak', explains they were once human. Survivors of a failed government experiment.")
+print()
+print("They offer you supplies in exchange for food. You trade willingly, and they hand over clean water and a pouch of used medicine.")
+if "food" in backpack:
             backpack.remove("food")
             add_to_backpack("clean water")
             add_to_backpack("used medicine pouch")
@@ -294,37 +296,39 @@ while choice not in ["communicate", "leave"]:
             print("You now know of a hidden underground tunnel network they use to move safely through the city.")
             print()
             print("--------------------------------------------------------------------------------------------------------------")
-        else:
-        print()
-        print("But you have no food to trade. They still let you stay the night, offering water for your honesty.")
-        add_to_backpack("clean water")
-        print()
-        print("Grak marks a location on your map: an old subway entrance that leads toward what they call 'The Core'—")
-        print()
-        print("a place where technology still runs and maybe, just maybe, humanity is trying to rebuild.")
-        print()
-        print("You and Zuko rest and leave at dawn, guided by the map.")
-        print()
-        print("You now have a new objective: Reach The Core.")
-        print()
-        print("But the way won’t be easy. Raiders roam the surface. Radiation storms sweep the ruins. And there’s something worse underground.")
-        print()
-        print("You reach the subway entrance. Rusted gates creak open as you descend. Zuko sniffs the air—alert.")
-        print()
-        print("Dim emergency lights flicker to life as you make your way into the tunnels. Your flashlight catches movement ahead.")
-        print()
-        print("You pause. You hear footsteps and low growls. Not from a creature. From humans.")
-        print()
-        print("Do you want to hide and wait for them to pass or call out and try to talk?")
-        print()
-        print("------------------------------------------------------------------------------------------------------------------")
-        choice = input("Type 'hide' to avoid them or 'talk' to call out and try to communicate: ").lower()
-        while choice not in ["hide", "talk"]:
-            print("Invalid choice. Please type 'hide' or 'talk'.")
-            choice = input("Type 'hide' or 'talk': ").lower()
+else:
+            print("-------------------------------------------------------------------------------------------------------------")
+            print()
+            print("But you have no food to trade. They still let you stay the night, offering water for your honesty.")
+            print()
+            add_to_backpack("clean water")
+            print()
+            print("Grak marks a location on your map: an old subway entrance that leads toward what they call 'The Core'—")
+            print()
+            print("a place where technology still runs and maybe, just maybe, humanity is trying to rebuild.")
+            print()
+            print("You and Zuko rest and leave at dawn, guided by the map.")
+            print()
+            print("You now have a new objective: Reach The Core.")
+            print()
+            print("But the way won’t be easy. Raiders roam the surface. Radiation storms sweep the ruins. And there’s something worse underground.")
+            print()
+            print("You reach the subway entrance. Rusted gates creak open as you descend. Zuko sniffs the air—alert.")
+            print()
+            print("Dim emergency lights flicker to life as you make your way into the tunnels. Your flashlight catches movement ahead.")
+            print()
+            print("You pause. You hear footsteps and low growls. Not from a creature. From humans.")
+            print()
+            print("Do you want to hide and wait for them to pass or call out and try to talk?")
+            print()
+            print("------------------------------------------------------------------------------------------------------------------")
+            choice = input("Type 'hide' to avoid them or 'talk' to call out and try to communicate: ").lower()
+            while choice not in ["hide", "talk"]:
+                  print("Invalid choice. Please type 'hide' or 'talk'.")
+                  choice = input("Type 'hide' or 'talk': ").lower()
 
 #if they choose to hide
-        if choice == "hide":
+if choice == "hide":
             print("------------------------------------------------------------------------------------------------------------")
             print()
             print("You pull Zuko into the shadows. The figures pass by—armed scavengers wearing makeshift armor.")
@@ -341,12 +345,9 @@ while choice not in ["communicate", "leave"]:
                 print("You insert the drone data chip. The door unlocks with a hiss.")
                 print()
                 print("Inside, you're greeted by lights, humming machines, and a voice on a speaker: 'Welcome to The \"Core\".'")
-                print()
-                print("--------------------------------------------------------------------------------------------------------------")
 
             #if no drone data - makes noise to alert the guards/DEAD
             else:
-                print("-------------------------------------------------------------------------------------------------------------")
                 print()
                 print("The scanner denies you entry. You’ll need technology to bypass this. As you took a step back, the anti-theft alarm blares deafeningly, alerting all the guards in proximity.")
                 print()
@@ -354,10 +355,10 @@ while choice not in ["communicate", "leave"]:
                 print()
                 print("You and Zuko died together harshly in this unforgiving world.")
                 print()
-            print("------------------------------------------------------------------------------------------------------------")
+                print("------------------------------------------------------------------------------------------------------------")
 
 #if they choose to talk
-        elif choice == "talk":
+elif choice == "talk":
             print("------------------------------------------------------------------------------------------------------------")
             print()
             print("You call out. The footsteps stop. Moments later, three humans approach, guns raised.")
