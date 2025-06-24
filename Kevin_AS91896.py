@@ -24,9 +24,36 @@ def choose_items(items_found):
         if choice == "yes":
             add_to_backpack(item)
 
-#introduction - the start of the story
+#function to remove an item from the backpack
+def remove_item():
+    if not backpack:
+        print("Your backpack is empty. There's nothing to remove.")
+        return
+    print("Items in your backpack:")
+    for i, item in enumerate(backpack, 1):
+        print(f"{i}. {item}")
+    choice = input("Which item do you want to remove? (type the item name): ")
+    if choice in backpack:
+        backpack.remove(choice)
+        print(f"You removed {choice} from your backpack.")
+    else:
+        print(f"Your backpack is full! You can't take '{item}'.")
+        choice = input("Do you want to remove something from your backpack to make space? (yes/no): ").lower()
+        if choice == "yes":
+            remove_item()
+            # try adding again if space is made
+            if len(backpack) < MAX_CAPACITY:
+                backpack.append(item)
+                print(f"You added {item} to your backpack.")
+            else:
+                print("Still no space. You left the item behind.")
+        else:
+            print("You left the item behind.")
+
+
+# introduction - the start of the story
 print("--------------------------------------------------------------------------------------------------------------------------------------------------")
-print("\nThe year is 2077, in a post-apocalyptic nuclear world war, you are with your dog named Zuko. Together, you are scavenging, looking for supplies to fit a bag thaty is limited to only 7 items.")
+print("\nThe year is 2077, in a post-apocalyptic nuclear world war, you are with your dog named Zuko. Together, you are scavenging, looking for supplies to fit a bag that is limited to only 7 items.")
 print("\nYou stumbled upon an dark underground bunker, however, you also see an abandoned city with possible civilization in the distance.\n")
 print("--------------------------------------------------------------------------------------------------------------------------------------------------")
 print("\nYou have a choice to make: Do you want to search the dark underground bunker or the abandoned city?\n")
@@ -43,14 +70,25 @@ if choice == "bunker":
     print("As you explore, you find some supplies...")
     bunker_items = ["flashlight", "first aid kit", "food", "makeshift gun parts", "bunker map"]
     choose_items(bunker_items)
+    # Allow player to manage backpack before continuing
+    while True:
+        action = input("Do you want to continue or manage your backpack? (continue/manage): ").lower()
+        if action == "manage":
+            remove_item()
+        elif action == "continue":
+            break
+        else:
+            print("Invalid choice. Please type 'continue' or 'manage'.")
     print()
     print("Suddenly, you hear a noise coming from deeper within the bunker.\n")
     print("Do you want to investigate the noise or leave quickly?\n")
     print("------------------------------------------------------------------------------------------------------------------------")
-    choice = input("Type 'investigate' to check out the noise or 'leave' to exit the bunker: ").lower()
-    while choice not in ["investigate", "leave"]:
+    
+    next_action = input("Type 'investigate' to check out the noise or 'leave' to exit the bunker: ").lower()
+    while next_action not in ["investigate", "leave"]:
         print("Invalid choice. Please type 'investigate' or 'leave'.")
-        choice = input("Type 'investigate' to check out the noise or 'leave' to exit the bunker: ").lower()
+        next_action = input("Type 'investigate' to check out the noise or 'leave' to exit the bunker: ").lower()
+
 
 
 #if they choose to explore the city2
@@ -60,6 +98,9 @@ if choice == "city":
     print("As you explore, you find some supplies...")
     city_items = ["flashlight", "first aid kit", "gun without ammo"]
     choose_items(city_items)
+    action = input("Do you want to continue or manage your backpack? (continue/manage): ").lower()
+if action == "manage":
+    remove_item()
     print()
     print("\nSuddenly, you hear a noise coming from one of the buildings.\n")
     print("Do you want to investigate the noise or leave quickly?\n")
@@ -72,16 +113,14 @@ if choice == "city":
 
 #if they choose to investigate the noise1
 if choice == "investigate":
-        print("-----------------------------------------------------------------------------------------------------------------")
-        print("\nYou and Zuko move towards the source of the noise. You find a group of mutated creatures huddled around a fire.\n")
-        print()
-        print("They look at you with curiosity but do not attack. Do you want to try to communicate with them or leave quickly?\n")
-        print("-----------------------------------------------------------------------------------------------------------------")
-        choice = input("Type 'communicate' to try talking to them or 'leave' to exit the bunker: ").lower()
-while choice not in ["communicate", "leave"]:
+    print("-----------------------------------------------------------------------------------------------------------------")
+    print("\nYou and Zuko move towards the source of the noise. You find a group of mutated creatures huddled around a fire.\n")
+    print("They look at you with curiosity but do not attack. Do you want to try to communicate with them or leave quickly?\n")
+    print("-----------------------------------------------------------------------------------------------------------------")
+    sub_choice = input("Type 'communicate' to try talking to them or 'leave' to exit the bunker: ").lower()
+    while sub_choice not in ["communicate", "leave"]:
         print("Invalid choice. Please type 'communicate' or 'leave'.")
-        choice = input("Type 'communicate' to try talking to them or 'leave' to exit the bunker: ").lower()
-
+        sub_choice = input("Type 'communicate' to try talking to them or 'leave' to exit the bunker: ").lower()
 
 #if they choose to communicate with the creatures1 - Dead
 if choice == "communicate":
@@ -106,17 +145,19 @@ You and Zuko die together harshly in this unforgiving world."""
         print("They seem friendly and offer you supplies in exchange for food.\n")
         if "food" in backpack:
             backpack.remove("food")
-            add_to_backpack("filtered water")
-            add_to_backpack("ammo clip")
-            print("\nYou made new allies. Zuko seems to like them too. You feel a sense of hope in this desolate world.\n")
-        else:
-            print("\nYou have no food to trade. They grow wary of you, and you decide to leave peacefully.\n")
-        print("------------------------------------------------------------------------------------------------------------------")
+        bunker_items = ["filtered water", "ammo clip"]
+        choose_items(bunker_items)
+        action = input("Do you want to continue or manage your backpack? (continue/manage): ").lower()
+if action == "manage":
+    remove_item()
+    print("\nYou made new allies. Zuko seems to like them too. You feel a sense of hope in this desolate world.\n")
+else:
+    print("\nYou have no food to trade. They grow wary of you, and you decide to leave peacefully.\n")
+    print("------------------------------------------------------------------------------------------------------------------")
 
-
-#if they choose to leave the bunker1
+#if they choose to leave the bunker
 elif choice == "leave":
-        paragraph = """You decide it's too dangerous to investigate further. You quickly exit the bunker with your supplies.
+    paragraph = """You decide it's too dangerous to investigate further. You quickly exit the bunker with your supplies.
 
 Outside, you see the abandoned city again, but now you're better prepared to face whatever lies ahead.
 
@@ -145,24 +186,27 @@ Peering around the corner, you spot a drone—half-functional, sparking occasion
 You have a choice to make: try to disable the drone and see if it has any data, or avoid it entirely and head toward the location marked on the map.
 
 Zuko looks to you, waiting for your decision."""
-
-        print("--------------------------------------------------------------------------------------------------------------------")
-        print(paragraph)
-        print("--------------------------------------------------------------------------------------------------------------------")
-        choice = input("Type 'disable' to disable the drone to see if it has any data or 'avoid' to head towards the location marked on the map: ").lower()
-        while choice != "disable" and choice != "avoid":
-                print("Invalid choice. Please type 'disable' or 'avoid'.")
-                choice = input("Type 'disable' to disable the drone to see if it has any data or 'avoid' to head towards the location marked on the map: ").lower()
+print("--------------------------------------------------------------------------------------------------------------------")
+print(paragraph)
+print("--------------------------------------------------------------------------------------------------------------------")
+choice = input("Type 'disable' to disable the drone to see if it has any data or 'avoid' to head towards the location marked on the map: ").lower()
+while choice != "disable" and choice != "avoid":
+    print("Invalid choice. Please type 'disable' or 'avoid'.")
+    choice = input("Type 'disable' to disable the drone to see if it has any data or 'avoid' to head towards the location marked on the map: ").lower()
 
 #if they choose to disable the drone
 if choice == "disable":
     paragraph = """You disable the drone successfully and extract a storage chip. Zuko barks softly as you work.
 
-After slipping the chip into your portable scanner, the screen flickers to life, revealing detailed patrol routes, radiation zones, and a blinking dot labeled *“Safe House?”*—several blocks northeast, buried deep in the red zone.
+After slipping the chip into your portable scanner, the screen flickers to life, revealing detailed patrol routes, radiation zones, 
+
+and a blinking dot labeled *“Safe House?”*—several blocks northeast, buried deep in the red zone.
 
 You quickly mark the location on your map and pack up your gear. Just then, Zuko growls low—there’s something moving in the shadows.
 
-With tension building, you’re left with a critical decision: take the direct path to the Safe House through the hazardous red zone, or detour around it to avoid whatever danger might be lurking ahead."""
+With tension building, you’re left with a critical decision: 
+
+take the direct path to the Safe House through the hazardous red zone, or detour around it to avoid whatever danger might be lurking ahead."""
     print("---------------------------------------------------------------------------------------------------------")
     print(paragraph)
     add_to_backpack("drone data")
@@ -210,7 +254,7 @@ With tension building, you’re left with a critical decision: take the direct p
             print("---------------------------------------------------------------------------------------------------------")
 
 # if they choose to avoid the drone
-elif choice == "avoid":
+if choice == "avoid":
     paragraph = """You decide not to risk the drone. You and Zuko follow the map painted on the wall deeper into the city.
 
 The path takes you underground—into the subway system. It’s dark, damp, and claustrophobic.
