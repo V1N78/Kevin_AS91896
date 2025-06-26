@@ -53,7 +53,8 @@ def remove_item():
 
 # introduction - the start of the story
 print("--------------------------------------------------------------------------------------------------------------------------------------------------")
-print("\nThe year is 2077, in a post-apocalyptic nuclear world war, you are with your dog named Zuko. Together, you are scavenging, looking for supplies to fit a bag that is limited to only 7 items.")
+print("\nThe year is 2077, in a post-apocalyptic nuclear world war, you are with your dog named Zuko.\n")
+print("Together, you are scavenging, looking for supplies to fit a bag that is limited to only 7 items.")
 print("\nYou stumbled upon an dark underground bunker, however, you also see an abandoned city with possible civilization in the distance.\n")
 print("--------------------------------------------------------------------------------------------------------------------------------------------------")
 print("\nYou have a choice to make: Do you want to search the dark underground bunker or the abandoned city?\n")
@@ -84,11 +85,10 @@ if choice == "bunker":
     print("Do you want to investigate the noise or leave quickly?\n")
     print("------------------------------------------------------------------------------------------------------------------------")
     
-    next_action = input("Type 'investigate' to check out the noise or 'leave' to exit the bunker: ").lower()
-    while next_action not in ["investigate", "leave"]:
+    choice = input("Type 'investigate' to check out the noise or 'leave' to exit the bunker: ").lower()
+    while choice not in ["investigate", "leave"]:
         print("Invalid choice. Please type 'investigate' or 'leave'.")
-        next_action = input("Type 'investigate' to check out the noise or 'leave' to exit the bunker: ").lower()
-
+        choice = input("Type 'investigate' to check out the noise or 'leave' to exit the bunker: ").lower()
 
 
 #if they choose to explore the city2
@@ -172,7 +172,7 @@ You and Zuko die together harshly in this unforgiving world."""
     #bugged
 
 #if they choose to leave the bunker
-if choice == "leave":
+elif choice == "leave":
     paragraph = """You decide it's too dangerous to investigate further. You quickly exit the bunker with your supplies.
 
 Outside, you see the abandoned city again, but now you're better prepared to face whatever lies ahead.
@@ -430,6 +430,6 @@ You and Zuko die together, harshly, in this unforgiving world."""
 
 #at the end of the game to show backpack contents
 print("\nYour final backpack contents: {}".format(backpack))
-print("\nThank you for playing!\n")
-print("remember, in this world, survival is never guaranteed. Every choice matters, and every item counts.\n")
+print("\nRemember, in this world, survival is never guaranteed. Every choice matters, and every item counts.\n")
+print("Thank you for playing!\n")
 #ending
