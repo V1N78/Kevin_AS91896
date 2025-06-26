@@ -430,3 +430,6 @@ You and Zuko die together, harshly, in this unforgiving world."""
 
 #at the end of the game to show backpack contents
 print("\nYour final backpack contents: {}".format(backpack))
+print("\nThank you for playing!\n")
+print("remember, in this world, survival is never guaranteed. Every choice matters, and every item counts.\n")
+#ending
