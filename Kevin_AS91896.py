@@ -99,34 +99,33 @@ if choice == "city":
     city_items = ["flashlight", "first aid kit", "gun without ammo"]
     choose_items(city_items)
     action = input("Do you want to continue or manage your backpack? (continue/manage): ").lower()
-if action == "manage":
-    remove_item()
-    print()
-    print("\nSuddenly, you hear a noise coming from one of the buildings.\n")
-    print("Do you want to investigate the noise or leave quickly?\n")
-    print("--------------------------------------------------------------------------------------------------------------------")
-    choice = input("Type 'investigate' to check out the noise or 'leave' to exit the city: ").lower()
-    while choice != "investigate" and choice != "leave":
-        print("Invalid choice. Please type 'investigate' or 'leave'.")
+    if action == "manage":
+        remove_item()
+        print("\nSuddenly, you hear a noise coming from one of the buildings.\n")
+        print("Do you want to investigate the noise or leave quickly?\n")
+        print("--------------------------------------------------------------------------------------------------------------------")
         choice = input("Type 'investigate' to check out the noise or 'leave' to exit the city: ").lower()
+        while choice != "investigate" and choice != "leave":
+            print("Invalid choice. Please type 'investigate' or 'leave'.")
+            choice = input("Type 'investigate' to check out the noise or 'leave' to exit the city: ").lower()
         
 
-#if they choose to investigate the noise1
-if choice == "investigate":
+# If they choose to investigate the noise1
+if action == "investigate":
     print("-----------------------------------------------------------------------------------------------------------------")
     print("\nYou and Zuko move towards the source of the noise. You find a group of mutated creatures huddled around a fire.\n")
     print("They look at you with curiosity but do not attack. Do you want to try to communicate with them or leave quickly?\n")
     print("-----------------------------------------------------------------------------------------------------------------")
-    choice = input("Type 'communicate' to try talking to them or 'leave' to exit the bunker: ").lower()
+
+    choice = input("Type 'communicate' to try talking to them or 'leave' to exit: ").lower()
     while choice not in ["communicate", "leave"]:
         print("Invalid choice. Please type 'communicate' or 'leave'.")
-        choice = input("Type 'communicate' to try talking to them or 'leave' to exit the bunker: ").lower()
+        choice = input("Type 'communicate' to try talking to them or 'leave' to exit: ").lower()
 
-#if they choose to communicate with the creatures1 - Dead
-if choice == "communicate":
-    if "bunker map" in backpack:
-        #hostile ending
-        paragraph = """You cautiously approach the creatures in an attempt to communicate; however, they seem hostile, and when you look closer, they are very hungry and were cooking wolves on the fire.
+    if choice == "communicate":
+        if "bunker map" in backpack:
+            # Hostile ending
+            paragraph = """You cautiously approach the creatures in an attempt to communicate; however, they seem hostile, and when you look closer, they are very hungry and were cooking wolves on the fire.
 
 You quickly realize that they are not friendly, so you and Zuko run straight out of the bunker in an attempt to escape.
 
@@ -135,58 +134,73 @@ But as you are about to flee, the creatures spot you and Zuko and rush toward yo
 You and Zuko fight bravely, but the odds are against you. You are outnumbered and outmatched.
 
 You and Zuko die together harshly in this unforgiving world."""
-        print("----------------------------------------------------------------------------------------------------------------------")
-        print(paragraph)
-        print("----------------------------------------------------------------------------------------------------------------------")
-    elif "bunker map" not in backpack:
-        # friendly creatures
-        print("------------------------------------------------------------------------------------------------------------------")
-        print("\nYou cautiously approach the creatures and try to communicate. Surprisingly, they respond in a broken language.\n")
-        print("They seem friendly and offer you supplies in exchange for food.\n")
-        if "food" in backpack:
+            print("----------------------------------------------------------------------------------------------------------------------")
+            print(paragraph)
+            print("----------------------------------------------------------------------------------------------------------------------")
+
+        elif "food" in backpack:
+            # Friendly creatures – food trade
+            print("------------------------------------------------------------------------------------------------------------------")
+            print("\nYou cautiously approach the creatures and try to communicate. Surprisingly, they respond in a broken language.\n")
+            print("They seem friendly and offer you supplies in exchange for food.\n")
             backpack.remove("food")
-        bunker_items = ["filtered water", "ammo clip"]
-        choose_items(bunker_items)
-        action = input("Do you want to continue or manage your backpack? (continue/manage): ").lower()
-if action == "manage":
-    remove_item()
-    print("\nYou made new allies. Zuko seems to like them too. You feel a sense of hope in this desolate world.\n")
-else:
-    print("\nYou have no food to trade. They grow wary of you, and you decide to leave peacefully.\n")
-    print("------------------------------------------------------------------------------------------------------------------")
+            trade_items = ["filtered water", "ammo clip"]
+            choose_items(trade_items)
+
+            while True:
+                action = input("Do you want to continue or manage your backpack? (continue/manage): ").lower()
+                if action == "manage":
+                    remove_item()
+                elif action == "continue":
+                    break
+                else:
+                    print("Invalid choice. Please type 'continue' or 'manage'.")
+
+            print("\nYou made new allies. Zuko seems to like them too. You feel a sense of hope in this desolate world.")
+
+        else:
+            # No food to trade
+            print("------------------------------------------------------------------------------------------------------------------")
+            print("\nYou try to communicate, and they seem neutral at first.\n")
+            print("However, you have no food to offer. The creatures grow wary of your presence.\n")
+            print("Sensing the tension, you decide to leave peacefully with Zuko.\n")
+            print("------------------------------------------------------------------------------------------------------------------")
+
+    elif choice == "leave":
+        print("\nYou decide not to take the risk. You and Zuko back away quietly and leave the area safely.\n")
+        print("------------------------------------------------------------------------------------------------------------------")
     #bugged
 
 #if they choose to leave the bunker
 if choice == "leave":
     paragraph = """You decide it's too dangerous to investigate further. You quickly exit the bunker with your supplies.
 
-    Outside, you see the abandoned city again, but now you're better prepared to face whatever lies ahead.
+Outside, you see the abandoned city again, but now you're better prepared to face whatever lies ahead.
 
-    Zuko seems relieved, and you both head back to your makeshift camp to rest and plan your next move.
+Zuko seems relieved, and you both head back to your makeshift camp to rest and plan your next move.
 
-    You feel a sense of accomplishment for surviving another day in this unforgiving world.
+You feel a sense of accomplishment for surviving another day in this unforgiving world.
 
-    You woke up the next day, packed all your gathered supplies, and decided to head towards the abandoned city.
+You woke up the next day, packed all your gathered supplies, and decided to head towards the abandoned city.
 
-    As you and Zuko approach the city, the once distant skyline looms closer—its shattered towers casting long shadows in the morning light.
+As you and Zuko approach the city, the once distant skyline looms closer—its shattered towers casting long shadows in the morning light.
 
-    The streets are eerily silent, save for the crunch of debris beneath your boots and the occasional gust of wind whistling through broken windows.
+The streets are eerily silent, save for the crunch of debris beneath your boots and the occasional gust of wind whistling through broken windows.
 
-    Zuko growls softly, his ears twitching. He's sensed something.
+Zuko growls softly, his ears twitching. He's sensed something.
 
-    You pause, scanning your surroundings.
+You pause, scanning your surroundings.
 
-    Graffiti lines the cracked walls, messages from survivors long gone: "DON'T TRUST THEM", "SAFE ZONE = LIE", and a crude map pointing deeper into the city.
+Graffiti lines the cracked walls, messages from survivors long gone: "DON'T TRUST THEM", "SAFE ZONE = LIE", and a crude map pointing deeper into the city.
 
-    Suddenly, you hear a metallic clatter from around the corner.
+Suddenly, you hear a metallic clatter from around the corner.
 
-    You motion for Zuko to stay low as you inch forward, gripping your makeshift weapon tightly.
+You motion for Zuko to stay low as you inch forward, gripping your makeshift weapon tightly.
 
-    Peering around the corner, you spot a drone—half-functional, sparking occasionally, scanning the area with a dim blue light.
+Peering around the corner, you spot a drone—half-functional, sparking occasionally, scanning the area with a dim blue light.
 
-    You have a choice to make: try to disable the drone and see if it has any data, or avoid it entirely and head toward the location marked on the map.
 
-    Zuko looks to you, waiting for your decision."""
+Zuko looks to you, waiting for your decision."""
     print("--------------------------------------------------------------------------------------------------------------------")
     print(paragraph)
     print("--------------------------------------------------------------------------------------------------------------------")
@@ -210,6 +224,8 @@ With tension building, you’re left with a critical decision:
 take the direct path to the Safe House through the hazardous red zone, or detour around it to avoid whatever danger might be lurking ahead."""
     print("---------------------------------------------------------------------------------------------------------")
     print(paragraph)
+    drone_items = ["drone data"]
+    choose_items(drone_items)
     add_to_backpack("drone data")
     print("---------------------------------------------------------------------------------------------------------")
     choice = input("Type 'direct' to go straight to the Safe House or 'detour' to take the longer, safer path: ").lower()
@@ -294,24 +310,33 @@ if choice == "investigate":
 #if they choose to communicate with the creatures2
 if choice == "communicate":
     print("------------------------------------------------------------------------------------------------------------------")
-print("\nThe creatures—humanoid but deformed from radiation—gesture for you to sit. Their fire crackles softly.\n")
-print("One, who calls himself 'Grak', explains they were once human. Survivors of a failed government experiment.\n")
-print("They offer you supplies in exchange for food. You trade willingly, and they hand over clean water and a pouch of used medicine.\n")
-if "food" in backpack:
-    backpack.remove("food")
-    city_items = ["clean water", "used medicine pouch"]
-    choose_items(city_items)
-    action = input("Do you want to continue or manage your backpack? (continue/manage): ").lower()
-    if action == "manage":
-        remove_item()
+    print("\nThe creatures—humanoid but deformed from radiation—gesture for you to sit. Their fire crackles softly.\n")
+    print("One, who calls himself 'Grak', explains they were once human. Survivors of a failed government experiment.\n")
+
+    if "food" in backpack:
+        print("They offer you supplies in exchange for food. You trade willingly, and they hand over clean water and a pouch of used medicine pouch.\n")
+        backpack.remove("food")
+        city_items = ["clean water", "used medicine pouch"]
+        choose_items(city_items)
+
+        while True:
+            action = input("Do you want to continue or manage your backpack? (continue/manage): ").lower()
+            if action == "manage":
+                remove_item()
+            elif action == "continue":
+                break
+            else:
+                print("Invalid choice. Please type 'continue' or 'manage'.")
+
         print("-------------------------------------------------------------------------------------------------------------")
         print("\nZuko warms up to them. You eat, rest, and learn from them.\n")
         print("Grak tells you about the dangers of the city, the raiders, and the radiation storms that sweep through.\n")
         print("He also mentions a place called 'The Core'—a rumored safe haven where technology still works.\n")
-        print("--------------------------------------------------------------------------------------------------------------")
-        #continue
-else:
-            paragraph = """But you have no food to trade. They still let you stay the night, offering water for your honesty.
+        print("-------------------------------------------------------------------------------------------------------------")
+
+    #if they do not have food to trade
+elif "food" not in backpack:
+    paragraph = """But you have no food to trade. They still let you stay the night, offering water for your honesty.
 
 You add clean water to your backpack.
 
@@ -332,13 +357,13 @@ Dim emergency lights flicker to life as you make your way into the tunnels. Your
 You pause. You hear footsteps and low growls. Not from a creature. From humans.
 
 Do you want to hide and wait for them to pass or call out and try to talk?"""
-            print("-------------------------------------------------------------------------------------------------------------\n")
-            print(paragraph)
-            print("\n------------------------------------------------------------------------------------------------------------------")
-            choice = input("Type 'hide' to avoid them or 'talk' to call out and try to communicate: ").lower()
-            while choice not in ["hide", "talk"]:
-                  print("Invalid choice. Please type 'hide' or 'talk'.")
-                  choice = input("Type 'hide' or 'talk': ").lower()
+    print("-------------------------------------------------------------------------------------------------------------\n")
+    print(paragraph)
+    print("\n------------------------------------------------------------------------------------------------------------------")
+    choice = input("Type 'hide' to avoid them or 'talk' to call out and try to communicate: ").lower()
+    while choice not in ["hide", "talk"]:
+        print("Invalid choice. Please type 'hide' or 'talk'.")
+        choice = input("Type 'hide' or 'talk': ").lower()
 
 #if they choose to hide
 if choice == "hide":
