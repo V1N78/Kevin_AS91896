@@ -86,9 +86,9 @@ if choice == "bunker":
     print("------------------------------------------------------------------------------------------------------------------------")
     
     choice = input("Type 'investigate' to check out the noise or 'leave' to exit the bunker: ").lower()
-    while choice not in ["investigate", "leave"]:
-        print("Invalid choice. Please type 'investigate' or 'leave'.")
-        choice = input("Type 'investigate' to check out the noise or 'leave' to exit the bunker: ").lower()
+    while choice not in ["investigate", "exit"]:
+        print("Invalid choice. Please type 'investigate' or 'exit'.")
+        choice = input("Type 'investigate' to check out the noise or 'exit' to exit the bunker: ").lower()
 
 
 #if they choose to explore the city2
@@ -98,31 +98,36 @@ if choice == "city":
     print("As you explore, you find some supplies...")
     city_items = ["flashlight", "first aid kit", "gun without ammo"]
     choose_items(city_items)
-    action = input("Do you want to continue or manage your backpack? (continue/manage): ").lower()
-    if action == "manage":
-        remove_item()
-        print("\nSuddenly, you hear a noise coming from one of the buildings.\n")
-        print("Do you want to investigate the noise or leave quickly?\n")
-        print("--------------------------------------------------------------------------------------------------------------------")
-        choice = input("Type 'investigate' to check out the noise or 'leave' to exit the city: ").lower()
-        while choice != "investigate" and choice != "leave":
-            print("Invalid choice. Please type 'investigate' or 'leave'.")
-            choice = input("Type 'investigate' to check out the noise or 'leave' to exit the city: ").lower()
+    while True:
+        action = input("Do you want to continue or manage your backpack? (continue/manage): ").lower()
+        if action == "manage":
+            remove_item()
+        elif action == "continue":
+            break
+        else:
+            print("Invalid choice. Please type 'continue' or 'manage'.")
+    print("\nSuddenly, you hear a noise coming from one of the buildings.\n")
+    print("Do you want to check out the noise or leave quickly?\n")
+    print("--------------------------------------------------------------------------------------------------------------------")
+    choice = input("Type 'check out' to check out the noise or 'exit' to exit the city: ").lower()
+    while choice != "check out" and choice != "exit":
+        print("Invalid choice. Please type 'check out' or 'exit'.")
+        choice = input("Type 'check out' to check out the noise or 'exit' to exit the city: ").lower()
         
 
 # If they choose to investigate the noise1
-if action == "investigate":
+if choice == "investigate":
     print("-----------------------------------------------------------------------------------------------------------------")
     print("\nYou and Zuko move towards the source of the noise. You find a group of mutated creatures huddled around a fire.\n")
     print("They look at you with curiosity but do not attack. Do you want to try to communicate with them or leave quickly?\n")
     print("-----------------------------------------------------------------------------------------------------------------")
 
-    choice = input("Type 'communicate' to try talking to them or 'leave' to exit: ").lower()
-    while choice not in ["communicate", "leave"]:
-        print("Invalid choice. Please type 'communicate' or 'leave'.")
-        choice = input("Type 'communicate' to try talking to them or 'leave' to exit: ").lower()
+    choice = input("Type 'talk' to try talking to them or 'exit' to exit: ").lower()
+    while choice not in ["talk", "exit"]:
+        print("Invalid choice. Please type 'talk' or 'exit'.")
+        choice = input("Type 'talk' to try talking to them or 'exit' to exit: ").lower()
 
-    if choice == "communicate":
+    if choice == "talk":
         if "bunker map" in backpack:
             # Hostile ending
             paragraph = """You cautiously approach the creatures in an attempt to communicate; however, they seem hostile, and when you look closer, they are very hungry and were cooking wolves on the fire.
@@ -172,7 +177,7 @@ You and Zuko die together harshly in this unforgiving world."""
     #bugged
 
 #if they choose to leave the bunker
-elif choice == "leave":
+if choice == "exit":
     paragraph = """You decide it's too dangerous to investigate further. You quickly exit the bunker with your supplies.
 
 Outside, you see the abandoned city again, but now you're better prepared to face whatever lies ahead.
@@ -293,8 +298,8 @@ You and Zuko exchange a look. This journey is far from over."""
     print(paragraph)
     print("\n---------------------------------------------------------------------------------------------------------")
 
-#if they choose to investigate the noise2 - fixed loop
-if choice == "investigate":
+#if they choose to check out the noise2/city - fixed loop
+if choice == "check out":
     print("-----------------------------------------------------------------------------------------------------------------")
     print("\nYou and Zuko move towards the source of the noise. You find a group of mutated creatures huddled around a fire.\n")
     print("They look at you with curiosity but do not attack. Do you want to try to communicate with them or leave quickly?\n")
@@ -335,8 +340,8 @@ if choice == "communicate":
         print("-------------------------------------------------------------------------------------------------------------")
 
     #if they do not have food to trade
-elif "food" not in backpack:
-    paragraph = """But you have no food to trade. They still let you stay the night, offering water for your honesty.
+    elif "food" not in backpack:
+        paragraph = """But you have no food to trade. They still let you stay the night, offering water for your honesty.
 
 You add clean water to your backpack.
 
@@ -391,7 +396,7 @@ if choice == "hide":
                 print("------------------------------------------------------------------------------------------------------------")
 
 #if they choose to talk
-elif choice == "talk":
+if choice == "call out":
             paragraph = """You call out. The footsteps stop. Moments later, three humans approach, guns raised.
 
 "You're not one of them?" one asks.
@@ -406,6 +411,8 @@ You accept. The road ahead may be dangerous, but you're no longer alone."""
             print("------------------------------------------------------------------------------------------------------------\n")
             print(paragraph)
             print("\n------------------------------------------------------------------------------------------------------------")
+
+
 
 #if they choose to leave2 - Dead
 if choice == "leave":
