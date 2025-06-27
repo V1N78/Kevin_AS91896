@@ -51,6 +51,7 @@ def remove_item():
             print("You left the item behind.")
 
 
+
 # introduction - the start of the story
 print("--------------------------------------------------------------------------------------------------------------------------------------------------")
 print("\nThe year is 2077, in a post-apocalyptic nuclear world war, you are with your dog named Zuko.\n")
@@ -71,11 +72,13 @@ if choice == "bunker":
     print("As you explore, you find some supplies...")
     bunker_items = ["flashlight", "first aid kit", "food", "makeshift gun parts", "bunker map"]
     choose_items(bunker_items)
+    print("\nYour final backpack contents: {}".format(backpack))
     # Allow player to manage backpack before continuing
     while True:
         action = input("Do you want to continue or manage your backpack? (continue/manage): ").lower()
         if action == "manage":
             remove_item()
+            print("\nYour final backpack contents: {}".format(backpack))
         elif action == "continue":
             break
         else:
@@ -98,10 +101,12 @@ if choice == "city":
     print("As you explore, you find some supplies...")
     city_items = ["flashlight", "first aid kit", "gun without ammo"]
     choose_items(city_items)
+    print("\nYour final backpack contents: {}".format(backpack))
     while True:
         action = input("Do you want to continue or manage your backpack? (continue/manage): ").lower()
         if action == "manage":
             remove_item()
+            print("\nYour final backpack contents: {}".format(backpack))
         elif action == "continue":
             break
         else:
@@ -151,11 +156,13 @@ You and Zuko die together harshly in this unforgiving world."""
             backpack.remove("food")
             trade_items = ["filtered water", "ammo clip"]
             choose_items(trade_items)
+            print("\nYour final backpack contents: {}".format(backpack))
 
             while True:
                 action = input("Do you want to continue or manage your backpack? (continue/manage): ").lower()
                 if action == "manage":
                     remove_item()
+                    print("\nYour final backpack contents: {}".format(backpack))
                 elif action == "continue":
                     break
                 else:
@@ -232,6 +239,7 @@ take the direct path to the Safe House through the hazardous red zone, or detour
     drone_items = ["drone data"]
     choose_items(drone_items)
     add_to_backpack("drone data")
+    print("\nYour final backpack contents: {}".format(backpack))
     print("---------------------------------------------------------------------------------------------------------")
     choice = input("Type 'direct' to go straight to the Safe House or 'detour' to take the longer, safer path: ").lower()
     while choice not in ["direct", "detour"]:
@@ -247,6 +255,7 @@ take the direct path to the Safe House through the hazardous red zone, or detour
             print("\nYou quickly reload your gun using the ammo clip from earlier. With Zuko’s help, you fend off the ambush.\n")
             print("You survive—but barely. Zuko is injured, and you use your first aid kit to treat him.\n")
             backpack.remove("first aid kit")
+            print("\nYour final backpack contents: {}".format(backpack))
             print("\nBloodied but alive, you arrive at the Safe House. The reinforced door slides open after scanning the drone chip.\n")
             print("Inside, clean water, medical supplies, and a working radio greet you. You’ve found sanctuary... for now.\n")
             print("---------------------------------------------------------------------------------------------------------")
@@ -323,11 +332,13 @@ if choice == "communicate":
         backpack.remove("food")
         city_items = ["clean water", "used medicine pouch"]
         choose_items(city_items)
+        print("\nYour final backpack contents: {}".format(backpack))
 
         while True:
             action = input("Do you want to continue or manage your backpack? (continue/manage): ").lower()
             if action == "manage":
                 remove_item()
+                print("\nYour final backpack contents: {}".format(backpack))
             elif action == "continue":
                 break
             else:
