@@ -88,7 +88,7 @@ if choice == "bunker":
     print("Do you want to investigate the noise or leave quickly?\n")
     print("------------------------------------------------------------------------------------------------------------------------")
     
-    choice = input("Type 'investigate' to check out the noise or 'leave' to exit the bunker: ").lower()
+    choice = input("Type 'investigate' to check out the noise or 'exit' to exit the bunker: ").lower()
     while choice not in ["investigate", "exit"]:
         print("Invalid choice. Please type 'investigate' or 'exit'.")
         choice = input("Type 'investigate' to check out the noise or 'exit' to exit the bunker: ").lower()
@@ -238,7 +238,6 @@ take the direct path to the Safe House through the hazardous red zone, or detour
     print(paragraph)
     drone_items = ["drone data"]
     choose_items(drone_items)
-    add_to_backpack("drone data")
     print("\nYour final backpack contents: {}".format(backpack))
     print("---------------------------------------------------------------------------------------------------------")
     choice = input("Type 'direct' to go straight to the Safe House or 'detour' to take the longer, safer path: ").lower()
@@ -306,6 +305,9 @@ You and Zuko exchange a look. This journey is far from over."""
     print("---------------------------------------------------------------------------------------------------------\n")
     print(paragraph)
     print("\n---------------------------------------------------------------------------------------------------------")
+#continue
+
+
 
 #if they choose to check out the noise2/city - fixed loop
 if choice == "check out":
