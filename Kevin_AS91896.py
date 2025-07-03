@@ -50,8 +50,6 @@ def remove_item():
         else:
             print("You left the item behind.")
 
-
-
 # introduction - the start of the story
 print("--------------------------------------------------------------------------------------------------------------------------------------------------")
 print("\nThe year is 2077, in a post-apocalyptic nuclear world war, you are with your dog named Zuko.\n")
