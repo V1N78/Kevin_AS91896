@@ -1,11 +1,11 @@
 # Adding backpack
 backpack = []
 # Maximum capacity of the backpack
-MAX_CAPACITY = 7
+max_capacity = 6
 
 #backpack helper function
 def add_to_backpack(item):
-    if len(backpack) < MAX_CAPACITY:
+    if len(backpack) < max_capacity:
         backpack.append(item)
         print(f"You added {item} to your backpack.")
     else:
@@ -14,7 +14,7 @@ def add_to_backpack(item):
 # function to let players choose what items to pick up
 def choose_items(items_found):
     for item in items_found:
-        if len(backpack) >= MAX_CAPACITY:
+        if len(backpack) >= max_capacity:
             print("Your backpack is full! You can't carry any more items.")
             break
         choice = input(f"Do you want to take '{item}'? (yes/no): ").lower()
@@ -42,7 +42,7 @@ def remove_item():
         if choice == "yes":
             remove_item()
             # try adding again if space is made
-            if len(backpack) < MAX_CAPACITY:
+            if len(backpack) < max_capacity:
                 backpack.append(item)
                 print(f"You added {item} to your backpack.")
             else:
@@ -55,8 +55,8 @@ def remove_item():
 # introduction - the start of the story
 print("--------------------------------------------------------------------------------------------------------------------------------------------------")
 print("\nThe year is 2077, in a post-apocalyptic nuclear world war, you are with your dog named Zuko.\n")
-print("Together, you are scavenging, looking for supplies to fit a bag that is limited to only 7 items.")
-print("\nYou stumbled upon an dark underground bunker, however, you also see an abandoned city with possible civilization in the distance.\n")
+print("Together, you are scavenging, looking for supplies to fit a bag that is limited to only 6 items.")
+print("\nYou stumbled upon a dark underground bunker, however, you also see an abandoned city with possible civilization in the distance.\n")
 print("--------------------------------------------------------------------------------------------------------------------------------------------------")
 print("\nYou have a choice to make: Do you want to search the dark underground bunker or the abandoned city?\n")
 choice = input("Type 'bunker' to search the bunker or 'city' to search the city: ").lower()
@@ -73,16 +73,16 @@ if choice == "bunker":
     bunker_items = ["flashlight", "first aid kit", "food", "makeshift gun parts", "bunker map"]
     choose_items(bunker_items)
     print("\nYour final backpack contents: {}".format(backpack))
-    # Allow player to manage backpack before continuing
+    # Allow player to remove backpack before continuing
     while True:
-        action = input("Do you want to continue or manage your backpack? (continue/manage): ").lower()
-        if action == "manage":
+        action = input("Do you want to continue or remove your backpack? (continue/remove): ").lower()
+        if action == "remove":
             remove_item()
             print("\nYour final backpack contents: {}".format(backpack))
         elif action == "continue":
             break
         else:
-            print("Invalid choice. Please type 'continue' or 'manage'.")
+            print("Invalid choice. Please type 'continue' or 'remove'.")
     print("------------------------------------------------------------------------------------------------------------------------")
     print("\nSuddenly, you hear a noise coming from deeper within the bunker.\n")
     print("Do you want to investigate the noise or leave quickly?\n")
@@ -103,14 +103,14 @@ if choice == "city":
     choose_items(city_items)
     print("\nYour final backpack contents: {}".format(backpack))
     while True:
-        action = input("Do you want to continue or manage your backpack? (continue/manage): ").lower()
-        if action == "manage":
+        action = input("Do you want to continue or remove your backpack? (continue/remove): ").lower()
+        if action == "remove":
             remove_item()
             print("\nYour final backpack contents: {}".format(backpack))
         elif action == "continue":
             break
         else:
-            print("Invalid choice. Please type 'continue' or 'manage'.")
+            print("Invalid choice. Please type 'continue' or 'remove'.")
     print("\nSuddenly, you hear a noise coming from one of the buildings.\n")
     print("Do you want to check out the noise or leave quickly?\n")
     print("--------------------------------------------------------------------------------------------------------------------")
@@ -159,14 +159,14 @@ You and Zuko die together harshly in this unforgiving world."""
             print("\nYour final backpack contents: {}".format(backpack))
 
             while True:
-                action = input("Do you want to continue or manage your backpack? (continue/manage): ").lower()
-                if action == "manage":
+                action = input("Do you want to continue or remove your backpack? (continue/remove): ").lower()
+                if action == "remove":
                     remove_item()
                     print("\nYour final backpack contents: {}".format(backpack))
                 elif action == "continue":
                     break
                 else:
-                    print("Invalid choice. Please type 'continue' or 'manage'.")
+                    print("Invalid choice. Please type 'continue' or 'remove'.")
 
             print("\nYou made new allies. Zuko seems to like them too. You feel a sense of hope in this desolate world.")
 
@@ -337,14 +337,14 @@ if choice == "communicate":
         print("\nYour final backpack contents: {}".format(backpack))
 
         while True:
-            action = input("Do you want to continue or manage your backpack? (continue/manage): ").lower()
-            if action == "manage":
+            action = input("Do you want to continue or remove your backpack? (continue/remove): ").lower()
+            if action == "remove":
                 remove_item()
                 print("\nYour final backpack contents: {}".format(backpack))
             elif action == "continue":
                 break
             else:
-                print("Invalid choice. Please type 'continue' or 'manage'.")
+                print("Invalid choice. Please type 'continue' or 'remove'.")
 
         print("-------------------------------------------------------------------------------------------------------------")
         print("\nZuko warms up to them. You eat, rest, and learn from them.\n")
@@ -355,6 +355,7 @@ if choice == "communicate":
     #if they do not have food to trade
     elif "food" not in backpack:
         paragraph = """But you have no food to trade. They still let you stay the night, offering water for your honesty.
+But you hesitate to decline his offer and accepted the water.
 
 You add clean water to your backpack.
 
@@ -378,10 +379,10 @@ Do you want to hide and wait for them to pass or call out and try to talk?"""
     print("-------------------------------------------------------------------------------------------------------------\n")
     print(paragraph)
     print("\n------------------------------------------------------------------------------------------------------------------")
-    choice = input("Type 'hide' to avoid them or 'talk' to call out and try to communicate: ").lower()
-    while choice not in ["hide", "talk"]:
-        print("Invalid choice. Please type 'hide' or 'talk'.")
-        choice = input("Type 'hide' or 'talk': ").lower()
+    choice = input("Type 'hide' to avoid them or 'call out' to call out and try to communicate: ").lower()
+    while choice not in ["hide", "call out"]:
+        print("Invalid choice. Please type 'hide' or 'call out'.")
+        choice = input("Type 'hide' or 'call out': ").lower()
 
 #if they choose to hide
 if choice == "hide":
