@@ -300,7 +300,7 @@ You arrive at an old maintenance station, converted into a shelter. A man in a g
 You shake your head. The man lowers his weapon.
 
 "Then you're welcome here. But you'll need to earn your stay. There's something we need help with..."
-
+    
 You and Zuko exchange a look. This journey is far from over."""
     print("---------------------------------------------------------------------------------------------------------\n")
     print(paragraph)
