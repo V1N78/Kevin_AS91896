@@ -65,7 +65,7 @@ while choice not in ["bunker", "city"]:
 
 #if they choose to explore the bunker1
 if choice == "bunker":
-    print("------------------------------------------------------------------------------------------------------------------------")
+    print("\n------------------------------------------------------------------------------------------------------------------------")
     print("\nYou and Zuko cautiously enter the dark underground bunker. The air is stale, and the lights flicker ominously.\n")
     print("As you explore, you find some supplies...")
     bunker_items = ["flashlight", "first aid kit", "food", "makeshift gun parts", "bunker map"]
@@ -94,7 +94,7 @@ if choice == "bunker":
 
 #if they choose to explore the city2
 if choice == "city":
-    print("--------------------------------------------------------------------------------------------------------------------")
+    print("\n--------------------------------------------------------------------------------------------------------------------")
     print("\nYou and Zuko cautiously approach the abandoned city. The buildings are crumbling, and the streets are eerily quiet.\n")
     print("As you explore, you find some supplies...")
     city_items = ["flashlight", "first aid kit", "gun without ammo"]
