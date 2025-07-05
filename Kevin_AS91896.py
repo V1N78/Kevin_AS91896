@@ -73,7 +73,7 @@ if choice == "bunker":
     print("\nYour final backpack contents: {}".format(backpack))
     # Allow player to remove backpack before continuing
     while True:
-        action = input("Do you want to continue or remove your backpack? (continue/remove): ").lower()
+        action = input("Do you want to continue or remove something from your backpack? (continue/remove): ").lower()
         if action == "remove":
             remove_item()
             print("\nYour final backpack contents: {}".format(backpack))
@@ -101,7 +101,7 @@ if choice == "city":
     choose_items(city_items)
     print("\nYour final backpack contents: {}".format(backpack))
     while True:
-        action = input("Do you want to continue or remove your backpack? (continue/remove): ").lower()
+        action = input("Do you want to continue or remove something from your backpack? (continue/remove): ").lower()
         if action == "remove":
             remove_item()
             print("\nYour final backpack contents: {}".format(backpack))
@@ -109,6 +109,7 @@ if choice == "city":
             break
         else:
             print("Invalid choice. Please type 'continue' or 'remove'.")
+    print("\n--------------------------------------------------------------------------------------------------------------------")
     print("\nSuddenly, you hear a noise coming from one of the buildings.\n")
     print("Do you want to check out the noise or leave quickly?\n")
     print("--------------------------------------------------------------------------------------------------------------------")
@@ -144,7 +145,7 @@ You and Zuko fight bravely, but the odds are against you. You are outnumbered an
 You and Zuko die together harshly in this unforgiving world."""
             print("----------------------------------------------------------------------------------------------------------------------")
             print(paragraph)
-            print("----------------------------------------------------------------------------------------------------------------------")
+            print()
 
         elif "food" in backpack:
             # Friendly creatures – food trade
@@ -157,7 +158,7 @@ You and Zuko die together harshly in this unforgiving world."""
             print("\nYour final backpack contents: {}".format(backpack))
 
             while True:
-                action = input("Do you want to continue or remove your backpack? (continue/remove): ").lower()
+                action = input("Do you want to continue or remove something from your backpack? (continue/remove): ").lower()
                 if action == "remove":
                     remove_item()
                     print("\nYour final backpack contents: {}".format(backpack))
@@ -209,7 +210,6 @@ You motion for Zuko to stay low as you inch forward, gripping your makeshift wea
 
 Peering around the corner, you spot a drone—half-functional, sparking occasionally, scanning the area with a dim blue light.
 
-
 Zuko looks to you, waiting for your decision."""
     print("--------------------------------------------------------------------------------------------------------------------")
     print(paragraph)
@@ -234,9 +234,19 @@ With tension building, you’re left with a critical decision:
 take the direct path to the Safe House through the hazardous red zone, or detour around it to avoid whatever danger might be lurking ahead."""
     print("---------------------------------------------------------------------------------------------------------")
     print(paragraph)
+    print()
     drone_items = ["drone data"]
     choose_items(drone_items)
     print("\nYour final backpack contents: {}".format(backpack))
+    while True:
+        action = input("Do you want to continue or remove something from your backpack? (continue/remove): ").lower()
+        if action == "remove":
+            remove_item()
+            print("\nYour final backpack contents: {}".format(backpack))
+        elif action == "continue":
+            break
+        else:
+            print("Invalid choice. Please type 'continue' or 'remove'.")
     print("---------------------------------------------------------------------------------------------------------")
     choice = input("Type 'direct' to go straight to the Safe House or 'detour' to take the longer, safer path: ").lower()
     while choice not in ["direct", "detour"]:
@@ -270,9 +280,7 @@ take the direct path to the Safe House through the hazardous red zone, or detour
         print("It takes longer, and you're forced to ration your food.\n")
         print("----------------------------------------------------------------------------------------------------------")
         if "food" in backpack:
-            print("-------------------------------------------------------")
-            print("\nYou eat just enough to keep moving, sharing with Zuko.\n")
-            print("-------------------------------------------------------")
+            print("\nYou eat just enough to keep moving on, partitioning with Zuko.\n")
             backpack.remove("food")
         else:
             print("----------------------------------------------------------------------------------------------------------")
@@ -302,10 +310,7 @@ You shake your head. The man lowers his weapon.
 You and Zuko exchange a look. This journey is far from over."""
     print("---------------------------------------------------------------------------------------------------------\n")
     print(paragraph)
-    print("\n---------------------------------------------------------------------------------------------------------")
-#continue
-
-
+    print()
 
 #if they choose to check out the noise2/city - fixed loop
 if choice == "check out":
@@ -335,7 +340,7 @@ if choice == "communicate":
         print("\nYour final backpack contents: {}".format(backpack))
 
         while True:
-            action = input("Do you want to continue or remove your backpack? (continue/remove): ").lower()
+            action = input("Do you want to continue or remove something from your backpack? (continue/remove): ").lower()
             if action == "remove":
                 remove_item()
                 print("\nYour final backpack contents: {}".format(backpack))
@@ -397,7 +402,6 @@ if choice == "hide":
                 print("It is like they knew you were coming.\n")
                 print("As you took a step, the door seals behind you, and the voice continues, 'We have been expecting you. Please, make yourself at home.'\n")
                 print("Then, a small group of survivors who have managed to keep the place running approaches you and greets you warmly, giving you and Zuko food to eat.\n")
-                print("--------------------------------------------------------------------------------------------------------------")
 
             #if no drone data - makes noise to alert the guards/DEAD
             else:
@@ -405,7 +409,6 @@ if choice == "hide":
                 print("\nThe scanner denies you entry. You’ll need technology to bypass this. As you took a step back, the anti-theft alarm blares deafeningly, alerting all the guards in proximity.\n")
                 print("As you turn to run, the guards spot you. You and Zuko make a break for it, but you were outnumbered.\n")
                 print("You and Zuko died together harshly in this unforgiving world.\n")
-                print("------------------------------------------------------------------------------------------------------------")
 
 #if they choose to talk
 if choice == "call out":
@@ -422,9 +425,7 @@ They offer to escort you part of the way in exchange for help carrying some salv
 You accept. The road ahead may be dangerous, but you're no longer alone."""
             print("------------------------------------------------------------------------------------------------------------\n")
             print(paragraph)
-            print("\n------------------------------------------------------------------------------------------------------------")
-
-
+            print()
 
 #if they choose to leave2 - Dead
 if choice == "leave":
@@ -445,9 +446,10 @@ The bears catch up to you and Zuko, and you realize this is the end. You fought 
 You and Zuko die together, harshly, in this unforgiving world."""
         print("-------------------------------------------------------------------------------------------------------------\n")
         print(paragraph)
-        print("\n-------------------------------------------------------------------------------------------------------------")
+        print()
 
-#at the end of the game to show backpack contents
+#at the end of the game to show backpack contents + ending
+print("-----------------------------------------------------------------------------------------------------------------------")
 print("\nYour final backpack contents: {}".format(backpack))
 print("\nRemember, in this world, survival is never guaranteed. Every choice matters, and every item counts.\n")
 print("Thank you for playing!\n")
