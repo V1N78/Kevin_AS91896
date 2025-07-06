@@ -52,7 +52,7 @@ def remove_item():
 
 # introduction - the start of the story
 print("--------------------------------------------------------------------------------------------------------------------------------------------------")
-print("\nThe year is 2077, in a post-apocalyptic nuclear world war, you are with your dog named Zuko.\n")
+print("\nThe year is 2087, in a post-apocalyptic nuclear world war, you are with your dog named Zuko.\n")
 print("Together, you are scavenging, looking for supplies to fit a bag that is limited to only 6 items.")
 print("\nYou stumbled upon a dark underground bunker, however, you also see an abandoned city with possible civilization in the distance.\n")
 print("--------------------------------------------------------------------------------------------------------------------------------------------------")
