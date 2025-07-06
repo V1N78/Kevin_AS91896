@@ -1,17 +1,13 @@
 the year 2087
 nuclear apocalyptic setting
 not the only human
-a lot of mutated wild animals
+a lot of mutated wild animals that could kill you
 dog name - zuko
 bunker
 city
 mutated bear killing
-print() for a space underneath
 backpack to choose wat u want to bring and wat to leave - 6 space
 you can choose what you want to bring and what you want to leave
 possibly 3 diff endings
-
-break - exits the loop instantly
-
-grak as a guide kinda
+"grak" as a guide kinda
 you find this place full of survivors that has been expecting you
