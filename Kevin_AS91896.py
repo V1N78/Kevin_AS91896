@@ -53,8 +53,9 @@ def remove_item():
 # introduction - the start of the story
 print("--------------------------------------------------------------------------------------------------------------------------------------------------")
 print("\nThe year is 2087, in a post-apocalyptic nuclear world war, you are with your dog named Zuko.\n")
-print("Together, you are scavenging, looking for supplies to fit a bag that is limited to only 6 items.")
-print("\nYou stumbled upon a dark underground bunker, however, you also see an abandoned city with possible civilization in the distance.\n")
+print("Together, you are scavenging, looking for supplies to fit a bag that can only carry 6 items.")
+print("\nYou stumbled upon a dark underground bunker, however, you also see an abandoned city with possible civilization in the distance.")
+print("\nRemember, you can only carry 6 items in your backpack, so choose wisely what you want to take with you. Every choice matters!\n")
 print("--------------------------------------------------------------------------------------------------------------------------------------------------")
 print("\nYou have a choice to make: Do you want to search the dark underground bunker or the abandoned city?\n")
 choice = input("Type 'bunker' to search the bunker or 'city' to search the city: ").lower()
@@ -282,6 +283,7 @@ take the direct path to the Safe House through the hazardous red zone, or detour
         if "food" in backpack:
             print("\nYou eat just enough to keep moving on, partitioning with Zuko.\n")
             backpack.remove("food")
+        #good ending
         else:
             print("----------------------------------------------------------------------------------------------------------")
             print("\nWithout food, you both grow weak. Zuko stumbles, but you press on.")
@@ -312,7 +314,7 @@ You and Zuko exchange a look. This journey is far from over."""
     print(paragraph)
     print()
 
-#if they choose to check out the noise2/city - fixed loop
+#if they choose to check out the noise2/city
 if choice == "check out":
     print("-----------------------------------------------------------------------------------------------------------------")
     print("\nYou and Zuko move towards the source of the noise. You find a group of mutated creatures huddled around a fire.\n")
